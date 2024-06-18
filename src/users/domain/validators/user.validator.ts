@@ -10,6 +10,7 @@ export class UserRules {
 
   @MaxLength(255)
   @IsEmail()
+  @IsString()
   @IsNotEmpty()
   email: string
 

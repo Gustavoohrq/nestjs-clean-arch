@@ -1,4 +1,4 @@
-import { ClassValidatorFields } from '../class-validator-fields'
+import { ClassValidatorFields } from '../../class-validator-fields'
 import * as classValidator from 'class-validator'
 
 
