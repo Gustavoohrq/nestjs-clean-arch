@@ -4,7 +4,7 @@ import {
   UserValidator,
   UserValidatorFactory,
 } from '../../user.validator'
-import { UserProps } from '@/users/domain/entities/user.entity'
+import {  UserProps } from '@/users/domain/entities/user.entity'
 
 let sut: UserValidator
 let props: UserProps
