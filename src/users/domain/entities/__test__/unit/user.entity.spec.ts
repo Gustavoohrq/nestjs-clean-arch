@@ -1,7 +1,7 @@
 import exp from 'constants'
 import { UserEntity, UserProps } from '../../user.entity'
 import { UserDataBuilder } from '@/users/domain/testing/helpers/user-data-builder'
-describe("UserEntity unit teste", () => {
+describe("UserEntity unit tests", () => {
   let props: UserProps
   let sut: UserEntity
   beforeEach(() => {
