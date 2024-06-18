@@ -1,4 +1,3 @@
-import { validate as uuidValidate } from 'uuid'
 import { ClassValidatorFields } from '../class-validator-fields'
 import * as classValidator from 'class-validator'
 
