@@ -1,4 +1,4 @@
-import { Entity } from "@/shared/domain/entitys/entity"
+import { Entity } from "@/shared/domain/entities/entity"
 
 export type UserProps = {
   name: string,
