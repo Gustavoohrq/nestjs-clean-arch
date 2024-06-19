@@ -1,4 +1,4 @@
-import { SearchParams } from "../../searchable-repository-contracts"
+import { SearchParams, SearchResult } from "../../searchable-repository-contracts"
 
 describe('Searchable Repository unit tests', () => {
 
@@ -40,7 +40,6 @@ describe('Searchable Repository unit tests', () => {
         expect(new SearchParams({ perPage: i.perPage }).perPage).toEqual(i.expect)
       })
     })
-
     it('sort prop', () => {
       const sut = new SearchParams()
       expect(sut.sort).toBeNull()
@@ -75,14 +74,14 @@ describe('Searchable Repository unit tests', () => {
         { sortDir: null as any, expect: 'desc' },
         { sortDir: undefined as any, expect: 'desc' },
         { sortDir: '' as any, expect: 'desc' },
-        { sortDir: 'test', expect: 'desc'  },
-        { sortDir: 0 as any, expect: 'desc'  },
-        { sortDir: -1 as any, expect: 'desc'  },
-        { sortDir: 2 as any, expect: 'desc'  },
-        { sortDir: 'desc'  as any, expect: 'desc'  },
-        { sortDir: 'asc' as any, expect: 'asc'  },
-        { sortDir: 'ASC' as any, expect: 'asc'  },
-        { sortDir: 'DESC'  as any, expect: 'desc'  },
+        { sortDir: 'test', expect: 'desc' },
+        { sortDir: 0 as any, expect: 'desc' },
+        { sortDir: -1 as any, expect: 'desc' },
+        { sortDir: 2 as any, expect: 'desc' },
+        { sortDir: 'desc' as any, expect: 'desc' },
+        { sortDir: 'asc' as any, expect: 'asc' },
+        { sortDir: 'ASC' as any, expect: 'asc' },
+        { sortDir: 'DESC' as any, expect: 'desc' },
 
       ]
       params.forEach((i) => {
@@ -108,4 +107,71 @@ describe('Searchable Repository unit tests', () => {
       })
     })
   })
+  describe('SearchResult tests', () => {
+    it('Constructor method', () => {
+      let sut = new SearchResult({
+        items: ['test1', 'test2', 'test3', 'test4'] as any,
+        total: 4,
+        currentPage: 1,
+        perPage: 2,
+        sort: null,
+        sortDir: null,
+        filter: null
+      })
+      expect(sut.toJSON()).toStrictEqual({
+        items: ['test1', 'test2', 'test3', 'test4'] as any,
+        total: 4,
+        currentPage: 1,
+        perPage: 2,
+        lastPage: 2,
+        sort: null,
+        sortDir: null,
+        filter: null
+      })
+
+      sut = new SearchResult({
+        items: ['test1', 'test2', 'test3', 'test4'] as any,
+        total: 4,
+        currentPage: 1,
+        perPage: 2,
+        sort: 'name',
+        sortDir: 'asc',
+        filter: 'field'
+      })
+      expect(sut.toJSON()).toStrictEqual({
+        items: ['test1', 'test2', 'test3', 'test4'] as any,
+        total: 4,
+        currentPage: 1,
+        perPage: 2,
+        lastPage: 2,
+        sort: 'name',
+        sortDir: 'asc',
+        filter: 'field'
+      })
+
+
+      sut = new SearchResult({
+        items: ['test1', 'test2', 'test3', 'test4'] as any,
+        total: 4,
+        currentPage: 1,
+        perPage: 10,
+        sort: 'name',
+        sortDir: 'asc',
+        filter: 'field'
+      })
+      expect(sut.lastPage).toBe(1)
+
+      sut = new SearchResult({
+        items: ['test1', 'test2', 'test3', 'test4'] as any,
+        total: 54,
+        currentPage: 1,
+        perPage: 10,
+        sort: 'name',
+        sortDir: 'asc',
+        filter: 'field'
+      })
+      expect(sut.lastPage).toBe(6)
+    })
+  })
+
 })
