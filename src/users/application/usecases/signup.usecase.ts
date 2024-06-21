@@ -3,6 +3,7 @@ import { UserEntity } from '@/users/domain/entities/user.entity'
 import { HashProvider } from '@/shared/application/providers/hash-provider'
 import { BadRequestError } from '@/shared/domain/errors/bad-request-error'
 import { UserOutput } from '../dtos/UserOutput'
+import { UseCase as DefaultUseCase } from '@/shared/application/usecases/use-case'
 
 export namespace SignupUseCase {
   export type Input = {
@@ -11,7 +12,7 @@ export namespace SignupUseCase {
     password: string
   }
 
-  export class UseCase {
+  export class UseCase implements DefaultUseCase<Input, UserOutput>{
     constructor(
       private userRepository: UserRepository.Repository,
       private hashProvider: HashProvider,
