@@ -1,4 +1,3 @@
-import { SearchResult } from "@/shared/domain/repositories/searchable-repository-contracts";
 import { ListUsersUseCase } from "../../list-tuser.usecase";
 import { UserInMemoryRepository } from "@/users/infrastructure/database/in-memory/repositories/user-in-memory.repository";
 import { UserRepository } from "@/users/domain/repositories/user.repository";
