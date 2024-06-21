@@ -1,5 +1,5 @@
 import { Entity } from "@/shared/domain/entities/entity";
-import { NotFoundError } from "@/shared/domain/erros/not-found-error";
+import { NotFoundError } from "@/shared/domain/errors/not-found-error";
 import { InMemorySearchableIRepository } from "../../in-memory-searchable.repository";
 import { SearchParams, SearchResult } from "../../searchable-repository-contracts";
 
