@@ -1,8 +1,8 @@
 import { UserRepository } from '@/users/domain/repositories/user.repository'
 import { UserEntity } from '@/users/domain/entities/user.entity'
 import { HashProvider } from '@/shared/application/providers/hash-provider'
-import { BadRequestError } from '@/shared/domain/errors/bad-request-error'
-import { UserOutput } from '../dtos/UserOutput'
+import { BadRequestError } from '@/shared/application/errors/bad-request-error'
+import { UserOutput } from '../dtos/user-output'
 import { UseCase as DefaultUseCase } from '@/shared/application/usecases/use-case'
 
 export namespace SignupUseCase {
