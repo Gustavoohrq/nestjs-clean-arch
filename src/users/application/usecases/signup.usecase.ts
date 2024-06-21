@@ -1,10 +1,9 @@
-import { HashProvider } from "@/shared/application/providers/hash-provider"
-import { BadRequestError } from "@/shared/domain/errors/bad-request-error"
-import { UserEntity } from "@/users/domain/entities/user.entity"
-import { UserRepository } from "@/users/domain/repositories/user.repository"
+import { UserRepository } from '@/users/domain/repositories/user.repository'
+import { UserEntity } from '@/users/domain/entities/user.entity'
+import { HashProvider } from '@/shared/application/providers/hash-provider'
+import { BadRequestError } from '@/shared/domain/errors/bad-request-error'
 
 export namespace SignupUseCase {
-
   export type Input = {
     name: string
     email: string
@@ -22,20 +21,26 @@ export namespace SignupUseCase {
   export class UseCase {
     constructor(
       private userRepository: UserRepository.Repository,
-      private hashProvider: HashProvider
+      private hashProvider: HashProvider,
     ) { }
+
     async execute(input: Input): Promise<Output> {
       const { email, name, password } = input
+
       if (!email || !name || !password) {
         throw new BadRequestError('Input data not provided')
       }
+
       await this.userRepository.emailExists(email)
-      const hashPassword = this.hashProvider.generateHash(password)
-      const entity = new UserEntity(Object.assign(input, { password: hashPassword }))
+
+      const hashPassword = await this.hashProvider.generateHash(password)
+
+      const entity = new UserEntity(
+        Object.assign(input, { password: hashPassword }),
+      )
 
       await this.userRepository.insert(entity)
       return entity.toJSON()
-
     }
   }
 }
