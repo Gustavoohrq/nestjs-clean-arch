@@ -11,14 +11,15 @@ export namespace SignupUseCase {
     email: string
     password: string
   }
+  export type Output = UserOutput
 
-  export class UseCase implements DefaultUseCase<Input, UserOutput>{
+  export class UseCase implements DefaultUseCase<Input, Output> {
     constructor(
       private userRepository: UserRepository.Repository,
       private hashProvider: HashProvider,
     ) { }
 
-    async execute(input: Input): Promise<UserOutput> {
+    async execute(input: Input): Promise<Output> {
       const { email, name, password } = input
 
       if (!email || !name || !password) {

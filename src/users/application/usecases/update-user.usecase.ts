@@ -7,14 +7,15 @@ export namespace UpdateUserUseCase {
     id: string,
     name: string
   }
+  export type Output = UserOutput
 
 
-  export class UseCase implements DefaultUseCase<Input, UserOutput> {
+  export class UseCase implements DefaultUseCase<Input, Output> {
     constructor(
       private userRepository: UserRepository.Repository
     ) { }
 
-    async execute(input: Input): Promise<UserOutput> {
+    async execute(input: Input): Promise<Output> {
       if (!input.name) throw new BadRequestError('Name not provided.')
       const entity = await this.userRepository.findById(input.id)
       entity.update(input.name)
