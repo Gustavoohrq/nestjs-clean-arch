@@ -65,7 +65,6 @@ describe('UserPrismaRepository integrations tests', () => {
         entities.push(
           new UserEntity({
             ...element,
-            name: `User${index}`,
             email: `test${index}@mail.com`,
             createdAt: new Date(createdAt.getTime() + index)
           })
@@ -80,6 +79,7 @@ describe('UserPrismaRepository integrations tests', () => {
 
       expect(searchOutput).toBeInstanceOf(SearchResult)
       expect(searchOutput.total).toBe(16)
+      expect(searchOutput.items.length).toBe(15)
     })
   })
 })
