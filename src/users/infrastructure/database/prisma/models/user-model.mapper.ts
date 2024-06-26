@@ -1,6 +1,6 @@
-import { ValidationError } from "@/shared/domain/errors/validation-error";
-import { UserEntity } from "@/users/domain/entities/user.entity";
-import { User } from "@prisma/client";
+import { ValidationError } from '@/shared/domain/errors/validation-error'
+import { UserEntity } from '@/users/domain/entities/user.entity'
+import { User } from '@prisma/client'
 
 export class UserModelMapper {
   static toEntity(model: User) {
@@ -8,12 +8,12 @@ export class UserModelMapper {
       name: model.name,
       email: model.email,
       password: model.password,
-      createdAt: model.createdAt
+      createdAt: model.createdAt,
     }
+
     try {
-      return new UserEntity(data)
-    }
-    catch{
+      return new UserEntity(data, model.id)
+    } catch {
       throw new ValidationError('An entity not be loaded')
     }
   }

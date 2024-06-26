@@ -1,7 +1,6 @@
 import { Entity } from "@/shared/domain/entities/entity";
-import { NotFoundError } from "@/shared/domain/errors/not-found-error";
-import { InMemorySearchableIRepository } from "../../in-memory-searchable.repository";
 import { SearchParams, SearchResult } from "../../searchable-repository-contracts";
+import { InMemorySearchableRepository } from "../../in-memory-searchable.repository";
 
 type StubEntityProps = {
   name: string;
@@ -9,7 +8,7 @@ type StubEntityProps = {
 }
 class StubEntity extends Entity<StubEntityProps> { }
 
-class StubInMemorySearchableIRepository extends InMemorySearchableIRepository<StubEntity> {
+class StubInMemorySearchableIRepository extends InMemorySearchableRepository<StubEntity> {
   sortableFields: string[] = ['name']
   protected async applyFilter(items: StubEntity[], filter: string | null): Promise<StubEntity[]> {
     if (!filter) return items

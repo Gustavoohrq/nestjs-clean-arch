@@ -26,7 +26,7 @@ describe('UserInMemoryRepository unit tests', () => {
   it('Should throw error when not found - emailExists()', async () => {
     const entity = new UserEntity(UserDataBuilder({}))
     await sut.insert(entity)
-    await expect(sut.emailExists(entity.email)).rejects.toThrow(new ConflictError(`Email adress already using.`))
+    await expect(sut.emailExists(entity.email)).rejects.toThrow(new ConflictError(`Email address already used`))
   })
 
   it('Should not exist - emailExists()', async () => {

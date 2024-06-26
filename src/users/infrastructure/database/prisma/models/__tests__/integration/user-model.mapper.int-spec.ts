@@ -9,8 +9,6 @@ describe('UserModelMapper integrations tests', () => {
 
   beforeAll(async () => {
     setupPrismaTests()
-    jest.setTimeout(60000)
-
     prismaService = new PrismaClient()
     await prismaService.$connect()
   })

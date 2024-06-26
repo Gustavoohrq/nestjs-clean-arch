@@ -15,7 +15,7 @@ describe('GetUserUseCase unit tests', () => {
   })
 
   it('Should throws error when entity not found', async () => {
-    await expect(() => sut.execute({ id: 'fake_id', name: 'test' })).rejects.toThrow(new NotFoundError('Entity not found.'))
+    await expect(() => sut.execute({ id: 'fake_id', name: 'test' })).rejects.toThrow(new NotFoundError('Entity not found'))
   })
 
   it('Should throws error when name not provided', async () => {

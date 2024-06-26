@@ -1,10 +1,11 @@
-import { Entity } from "../entities/entity";
-import { NotFoundError } from "../errors/not-found-error";
-import { RepositoryInterface } from "./repository-contracts";
+import { Entity } from '../entities/entity'
+import { NotFoundError } from '../errors/not-found-error'
+import { RepositoryInterface } from './repository-contracts'
 
-export abstract class InMemoryRepository<E extends Entity> implements RepositoryInterface<E> {
-
+export abstract class InMemoryRepository<E extends Entity>
+  implements RepositoryInterface<E> {
   items: E[] = []
+
   async insert(entity: E): Promise<void> {
     this.items.push(entity)
   }
@@ -32,8 +33,8 @@ export abstract class InMemoryRepository<E extends Entity> implements Repository
   protected async _get(id: string): Promise<E> {
     const _id = `${id}`
     const entity = this.items.find(item => item.id === _id)
-    if(!entity) {
-      throw new NotFoundError("Entity not found.");
+    if (!entity) {
+      throw new NotFoundError('Entity not found')
     }
     return entity
   }

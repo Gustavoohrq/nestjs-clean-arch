@@ -1,6 +1,5 @@
 import { validateSync } from "class-validator";
 import { FieldErrors, ValidatorFieldsInterface } from "./validator-fields.interface";
-import { da } from "@faker-js/faker";
 
 export abstract class ClassValidatorFields<PropsValidated> implements ValidatorFieldsInterface<PropsValidated>{
   errors: FieldErrors = null

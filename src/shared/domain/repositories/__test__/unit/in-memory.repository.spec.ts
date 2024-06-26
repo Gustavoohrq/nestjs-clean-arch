@@ -25,7 +25,7 @@ describe('InMemoryRepository unit tests', () => {
   })
 
   it('Should throw error when entity not found', async () => {
-    await expect(sut.findById('fake_id')).rejects.toThrow(new NotFoundError('Entity not found.'))
+    await expect(sut.findById('fake_id')).rejects.toThrow(new NotFoundError('Entity not found'))
   })
 
   it('Should find a entity by id', async () => {
@@ -45,7 +45,7 @@ describe('InMemoryRepository unit tests', () => {
   it('Should throw error on update when entity not found', async () => {
     const entity = new StubEntity({name: 'teste', price: 10})
 
-    await expect(sut.update(entity)).rejects.toThrow(new NotFoundError('Entity not found.'))
+    await expect(sut.update(entity)).rejects.toThrow(new NotFoundError('Entity not found'))
   })
 
   it('Should update an entity by id', async () => {
@@ -59,7 +59,7 @@ describe('InMemoryRepository unit tests', () => {
   })
 
   it('Should throw error when entity not found', async () => {
-    await expect(sut.delete('fake_id')).rejects.toThrow(new NotFoundError('Entity not found.'))
+    await expect(sut.delete('fake_id')).rejects.toThrow(new NotFoundError('Entity not found'))
   })
 
   it('Should delte an entity by id', async () => {

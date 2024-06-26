@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { EnvConfigService } from '../../env-config.service'
-import { EnvConfigModule } from '../../interface/env-config.module'
+import { EnvConfigModule } from '../../env-config.module'
 
 describe('EnvConfigService unit tests', () => {
   let sut: EnvConfigService
