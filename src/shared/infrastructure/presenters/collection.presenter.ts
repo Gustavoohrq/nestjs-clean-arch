@@ -1,12 +1,6 @@
-import { Exclude, Expose, Transform } from "class-transformer"
+import { Exclude, Expose } from "class-transformer"
 import { PaginationPresenter } from "./pagination.presenter"
 
-export type PaginationPresenterProps = {
-  currentPage: number
-  perPage: number
-  lastPage: number
-  total: number
-}
 
 export abstract class CollectionPresenter {
   @Exclude()
