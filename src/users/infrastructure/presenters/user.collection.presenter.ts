@@ -1,0 +1,16 @@
+import { CollectionPresenter } from "@/shared/infrastructure/presenters/collection.presenter"
+import { UserPresenter } from "./user.presenter";
+import { ListUsersUseCase } from "@/users/application/usecases/list-user.usecase";
+
+export class UserCollectionPresenter extends CollectionPresenter {
+  data: UserPresenter[]
+
+  constructor(output: ListUsersUseCase.Output) {
+    const {items, ...paginationProps} = output
+    super(paginationProps)
+    this.data = items.map(item => new UserPresenter(item))
+  }
+
+}
+
+
