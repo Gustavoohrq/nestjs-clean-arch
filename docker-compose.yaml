@@ -3,7 +3,7 @@ version: '3.1'
 services:
   db:
     build: .
-    container_name: api-db
+    container_name: clean-db
     restart: always
     tty: true
     ports:
