@@ -3,13 +3,17 @@ version: '3.1'
 services:
   db:
     build: .
-    container_name: clean-db
+    privileged: true
+    container_name: api-db
     restart: always
     tty: true
     ports:
       - '3032:5432'
     volumes:
-      - .docker/dbdata:/var/lib/postgresql/data
+      - .docker/dbdata:/var/lib/postgresql
     environment:
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=projectdb
+volumes:
+  docker:
+    driver: local

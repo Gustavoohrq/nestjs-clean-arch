@@ -37,7 +37,7 @@ $ yarn install
 ```bash
 # development
 $ yarn run start
-
+npx dotenv-cli -e .env.development -- npx prisma migrate dev
 # watch mode
 $ yarn run start:dev
 
