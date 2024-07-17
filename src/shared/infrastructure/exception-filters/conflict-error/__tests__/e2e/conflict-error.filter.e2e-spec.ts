@@ -34,10 +34,11 @@ describe('ConflictErrorFilter e2e tests', () => {
 
   it('should catch a ConflictError', () => {
     return request(app.getHttpServer())
-    .get('/stub')
-    .expect({
-      statusCode: 409,
-      error: 'Conflict',
-      message: 'Conflicting data.'
-    })  });
+      .get('/stub')
+      .expect({
+        statusCode: 409,
+        error: 'Conflict',
+        message: 'Conflicting data.'
+      })
+  });
 });
