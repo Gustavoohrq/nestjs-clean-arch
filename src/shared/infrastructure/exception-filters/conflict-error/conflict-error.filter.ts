@@ -1,6 +1,6 @@
 import { ConflictError } from '@/shared/domain/errors/conflict.error';
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
-import {FastifyReply} from 'fastify'
+import { FastifyReply } from 'fastify'
 
 @Catch(ConflictError)
 export class ConflictErrorFilter implements ExceptionFilter {
