@@ -1,5 +1,5 @@
 import { Controller, Get, INestApplication } from '@nestjs/common';
-import { NotFoundErrorFilter } from '../../not-found-error/not-found-error.filter';
+import { NotFoundErrorFilter } from '../../not-found-error.filter';
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundError } from '@/shared/domain/errors/not-found-error';
 import request from 'supertest'
