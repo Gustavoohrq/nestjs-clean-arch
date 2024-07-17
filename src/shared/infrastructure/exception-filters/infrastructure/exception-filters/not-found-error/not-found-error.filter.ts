@@ -9,7 +9,7 @@ export class NotFoundErrorFilter implements ExceptionFilter {
     const response = ctx.getResponse<FastifyReply>()
     response.status(404).send({
       statusCode: 404,
-      error: 'NotFound',
+      error: 'Not Found',
       message: exception.message
     })
   }
